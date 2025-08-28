@@ -1,28 +1,8 @@
 <?php
 
-require_once "connection.php";
-
 $nama = "";
 $kelas = "";
 $jurusan = "";
-
-$success = "";
-$error = "";
-
-if(isset($_POST['simpan'])) {
-    $nama = $_POST['nama'];
-    $kelas = $_POST['kelas'];
-    $jurusan = $_POST['jurusan'];
-
-    if($nama && $kelas && $jurusan) {
-        $sql = "insert into siswa (nama, kelas, jurusan) values ('$nama', '$kelas', '$jurusan')";
-        mysqli_query($connection, $sql);
-
-        $success = "Data berhasil terkirim";
-    } else {
-        $error = "Isi data nya lah boy";
-    }
-}
 
 ?>
 
@@ -36,7 +16,7 @@ if(isset($_POST['simpan'])) {
 <body>
     <h3>Data siswa SMK Telkom 1 Medan</h3>
     <!-- masukkan data -->
-     <form action="" method="POST">
+     <form action="proses.php" method="POST">
         <div>
             <label>Nama:
                 <input type="text" name="nama" value="<?= $nama ?>">
@@ -60,15 +40,6 @@ if(isset($_POST['simpan'])) {
             <input type="submit" name="simpan" value="Simpan Data">
         </div>
      </form>
-
-     <?php if($success) { ?>
-        <h4>Data berhasil terkirim</h4> 
-     <?php } ?>
-
-     <?php if($error) { ?>
-        <h4>Isi data yang tepat</h4> 
-     <?php } ?>
-
-     <button><a href="index.html">Back to home page</a></button>
+     <button><a href="/">Back to home page</a></button>
 </body>
 </html>
