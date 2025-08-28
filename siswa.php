@@ -1,8 +1,15 @@
 <?php
 
+require_once "connection.php";
+
+$connection = connection();
+
 $nama = "";
 $kelas = "";
 $jurusan = "";
+
+$read = "select nama, kelas, jurusan from siswa";
+$result = mysqli_query($connection, $read);
 
 ?>
 
@@ -14,7 +21,7 @@ $jurusan = "";
     <title>Data siswa</title>
 </head>
 <body>
-    <h3>Data siswa SMK Telkom 1 Medan</h3>
+    <h3>Tambah siswa SMK Telkom 1 Medan</h3>
     <!-- masukkan data -->
      <form action="proses.php" method="POST">
         <div>
@@ -41,5 +48,26 @@ $jurusan = "";
         </div>
      </form>
      <button><a href="/">Back to home page</a></button>
+
+     <h3>Tampilkan siswa SMK Telkom 1 Medan</h3>
+     <?php
+     echo "<table border='1' cellpadding='5' cellspacing='0'>";
+     echo "<tr><th>Nama</th><th>Kelas</th><th>Jurusan</th></tr>";
+
+     while ($row = mysqli_fetch_assoc($result)) {
+         echo "<tr>";
+         echo "<td>" . $row['nama'] . "</td>";
+         echo "<td>" . $row['kelas'] . "</td>";
+         echo "<td>" . $row['jurusan'] . "</td>";
+         echo "</tr>";
+     }
+
+     echo "</table>";
+
+     ?>
 </body>
 </html>
+
+<?php
+mysqli_close($connection);
+?>

@@ -2,8 +2,10 @@
 
 require_once "connection.php";
 
-$success = "";
-$error = "";
+$connection = connection();
+
+$sukses_tambah = "";
+$error_tambah = "";
 
 if(isset($_POST['simpan'])) {
     $nama = $_POST['nama'];
@@ -11,12 +13,12 @@ if(isset($_POST['simpan'])) {
     $jurusan = $_POST['jurusan'];
 
     if($nama && $kelas && $jurusan) {
-        $sql = "insert into siswa (nama, kelas, jurusan) values ('$nama', '$kelas', '$jurusan')";
-        mysqli_query($connection, $sql);
+        $cread = "insert into siswa (nama, kelas, jurusan) values ('$nama', '$kelas', '$jurusan')";
+        mysqli_query($connection, $cread);
 
-        $success = "Data berhasil terkirim";
+        $sukses_tambah = "Data berhasil terkirim";
     } else {
-        $error = "Isi data nya lah boy";
+        $error_tambah = "Isi data nya lah boy";
     }
 }
 
@@ -30,14 +32,17 @@ if(isset($_POST['simpan'])) {
     <title>Proses</title>
 </head>
 <body>
-    <?php if($success) { ?>
+    <?php if($sukses_tambah) { ?>
         <h4>Data berhasil terkirim</h4> 
     <?php } ?>
 
-    <?php if($error) { ?>
+    <?php if($error_tambah) { ?>
         <h4>Isi data yang tepat</h4> 
     <?php } ?>
-
     <button><a href="siswa.php">Back to form</a></button>
 </body>
 </html>
+
+<?php
+mysqli_close($connection); 
+?>

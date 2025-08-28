@@ -5,9 +5,7 @@ $user = "root";
 $password = "";
 $database = "belajar-crud";
 
-$connection = mysqli_connect($host, $user, $password, $database);
-
-// cek koneksi
-if (!$connection) {
-    die("Gagal koneksi ke database");
+function connection () {
+    global $host, $user, $password, $database;
+    return mysqli_connect($host, $user, $password, $database);
 }
