@@ -69,6 +69,6 @@ if(isset($_POST['simpan'])) {
         <h4>Isi data yang tepat</h4> 
      <?php } ?>
 
-     <button><a href="index.php">Back to home page</a></button>
+     <button><a href="index.html">Back to home page</a></button>
 </body>
 </html>
