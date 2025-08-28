@@ -49,22 +49,23 @@ $result = mysqli_query($connection, $read);
      </form>
      <button><a href="/">Back to home page</a></button>
 
-     <h3>Tampilkan siswa SMK Telkom 1 Medan</h3>
+     <h3>Data siswa SMK Telkom 1 Medan</h3>
+
+     <table border='1' cellpadding='5' cellspacing='0'>
+     <tr><th>Nama</th><th>Kelas</th><th>Jurusan</th></tr>
+         
      <?php
-     echo "<table border='1' cellpadding='5' cellspacing='0'>";
-     echo "<tr><th>Nama</th><th>Kelas</th><th>Jurusan</th></tr>";
-
-     while ($row = mysqli_fetch_assoc($result)) {
-         echo "<tr>";
-         echo "<td>" . $row['nama'] . "</td>";
-         echo "<td>" . $row['kelas'] . "</td>";
-         echo "<td>" . $row['jurusan'] . "</td>";
-         echo "</tr>";
+     while ($row = mysqli_fetch_assoc($result)) { ?>
+         <tr>
+         <td><?= $row['nama'] ?></td>
+         <td><?= $row['kelas'] ?></td>
+         <td><?= $row['jurusan'] ?></td>
+         </tr>
+         <?php
      }
+    ?>
+    </table>
 
-     echo "</table>";
-
-     ?>
 </body>
 </html>
 
